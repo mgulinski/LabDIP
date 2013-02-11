@@ -22,23 +22,26 @@ import java.text.DecimalFormat;
  */
 public class Startup {
     
-    public static DecimalFormat fTip = new DecimalFormat("#,##0.00");
-    
     public static void main(String[] args) {
+	
+	DecimalFormat fTip = new DecimalFormat("$#,##0.00");	
+	
         
-//        TippingStrategy calc = new BaggageServiceTipCalculator(
-//                BaggageServiceTipCalculator.ServiceQuality.POOR,5);
+        TippingStrategy calc = new BaggageServiceTipCalculator(
+                BaggageServiceTipCalculator.ServiceQuality.FAIR,10);
 	
 	
 //	System.out.println("The tip ammount is: $" + service.getTipForService());
 	
 	
-	TippingStrategy calc = new FoodServiceTipCalculator(
-                FoodServiceTipCalculator.ServiceQuality.GOOD,10);
+//	TippingStrategy calc = new FoodServiceTipCalculator(
+//                FoodServiceTipCalculator.ServiceQuality.GOOD,10);
 	
 	TippingService tipService = new TippingService(calc);
 	
-	System.out.println("The tip ammount is: $" + fTip.format(tipService.getTip()));
+	
+	
+	System.out.println("The tip ammount is: " + fTip.format(tipService.getTip()));
 	
     }
 
